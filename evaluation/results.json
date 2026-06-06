@@ -1,0 +1,319 @@
+{
+  "backend": {
+    "multiple_certificates": {
+      "certificates_issued_and_verified": 15,
+      "all_reported_valid_before_tamper_suite": true,
+      "per_certificate_status": [
+        {
+          "certificate_id": "CERT-C3889B06",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-BB8808F8",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-D9EEADA0",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-A602B13F",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-25E6802C",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-89485502",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-1512E567",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-CB17058E",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-124E2C8A",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-CCF375AB",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-9770A1C7",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-47F55D9D",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-ED9E1DBD",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-55805023",
+          "status": "valid"
+        },
+        {
+          "certificate_id": "CERT-60C82E96",
+          "status": "valid"
+        }
+      ]
+    },
+    "tamper_detection": {
+      "hashed_payload_cases_run": 7,
+      "hashed_payload_cases_caught": 7,
+      "hashed_payload_detection_rate": 1.0,
+      "chain_only_mutation_cases_run": 2,
+      "chain_only_mutation_cases_flagged_by_integrity_check": 2,
+      "cases": [
+        {
+          "certificate_id": "CERT-9F14052A",
+          "expected_status": "tampered",
+          "observed_status": "tampered",
+          "caught_as_expected": true,
+          "case": "sgpa_row",
+          "category": "hashed_field"
+        },
+        {
+          "certificate_id": "CERT-842D7D67",
+          "expected_status": "tampered",
+          "observed_status": "tampered",
+          "caught_as_expected": true,
+          "case": "grade_row",
+          "category": "hashed_field"
+        },
+        {
+          "certificate_id": "CERT-1B8A2FA7",
+          "expected_status": "tampered",
+          "observed_status": "tampered",
+          "caught_as_expected": true,
+          "case": "semester_row",
+          "category": "hashed_field"
+        },
+        {
+          "certificate_id": "CERT-08E96FF8",
+          "expected_status": "tampered",
+          "observed_status": "tampered",
+          "caught_as_expected": true,
+          "case": "student_id_row",
+          "category": "hashed_field"
+        },
+        {
+          "certificate_id": "CERT-5395EBDA",
+          "expected_status": "tampered",
+          "observed_status": "tampered",
+          "caught_as_expected": true,
+          "case": "stored_certificate_hash",
+          "category": "hashed_field"
+        },
+        {
+          "certificate_id": "CERT-C3E2CFF0",
+          "expected_status": "tampered",
+          "observed_status": "tampered",
+          "caught_as_expected": true,
+          "case": "subject_credits",
+          "category": "hashed_field"
+        },
+        {
+          "certificate_id": "CERT-BC8F13A4",
+          "expected_status": "tampered",
+          "observed_status": "tampered",
+          "caught_as_expected": true,
+          "case": "delete_subject_row",
+          "category": "hashed_field"
+        },
+        {
+          "certificate_id": "CERT-1F3C5A5C",
+          "expected_status": "valid",
+          "observed_status": "valid",
+          "caught_as_expected": true,
+          "case": "document_type_not_in_hash",
+          "category": "not_in_hash_payload"
+        },
+        {
+          "case": "blockchain_block_hash",
+          "category": "chain_only_use_integrity_endpoint",
+          "verify_status": "valid",
+          "chain_valid_after_mutation": false,
+          "expected_verify": "valid",
+          "expected_chain_invalid": true,
+          "chain_invalid_as_expected": true
+        },
+        {
+          "case": "blockchain_certificate_hash",
+          "category": "chain_only_use_integrity_endpoint",
+          "verify_status": "valid",
+          "chain_valid_after_mutation": false,
+          "expected_verify": "valid",
+          "expected_chain_invalid": true,
+          "chain_invalid_as_expected": true
+        }
+      ],
+      "note": "Payload tampering is detected by /certificate/verify via digest mismatch. Fields not included in generate_certificate_hash (e.g. document_type) will not change verify status. Blockchain row tampering is surfaced by /certificate/blockchain/integrity."
+    },
+    "manual_vs_system": {
+      "system_verification_sample_size": 60,
+      "system_verification_median_ms_http": 8.689,
+      "system_verification_p95_ms_http": 13.571,
+      "system_verification_min_ms_http": 6.478,
+      "system_verification_max_ms_http": 19.523,
+      "manual_verification_reference_minutes": 45.0,
+      "manual_reference_source": "MANUAL_VERIFICATION_MINUTES env (default 45) \u2014 replace with your measured registrar / email turnaround for the paper.",
+      "approx_speedup_times_faster_vs_manual_reference": 311000
+    },
+    "blockchain_chain_integrity": {
+      "validate_before_tamper_suite": {
+        "valid": true,
+        "block_count": 15,
+        "error_count": 0,
+        "errors": []
+      },
+      "validate_after_rolled_back_tampers": {
+        "valid": true,
+        "block_count": 29,
+        "error_count": 0,
+        "errors": []
+      }
+    },
+    "hash_payload_fields": [
+      "student_id",
+      "semester",
+      "sgpa",
+      "subject rows: subject_code, grade, credits (sorted in hash)"
+    ]
+  },
+  "frontend": {
+    "responsiveViewportChecks": [
+      {
+        "viewport": "mobile",
+        "width": 375,
+        "height": 812,
+        "path": "/",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "mobile",
+        "width": 375,
+        "height": 812,
+        "path": "/verify",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "mobile",
+        "width": 375,
+        "height": 812,
+        "path": "/login",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "tablet",
+        "width": 768,
+        "height": 1024,
+        "path": "/",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "tablet",
+        "width": 768,
+        "height": 1024,
+        "path": "/verify",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "tablet",
+        "width": 768,
+        "height": 1024,
+        "path": "/login",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "desktop",
+        "width": 1280,
+        "height": 720,
+        "path": "/",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "desktop",
+        "width": 1280,
+        "height": 720,
+        "path": "/verify",
+        "horizontalOverflowPx": 0
+      },
+      {
+        "viewport": "desktop",
+        "width": 1280,
+        "height": 720,
+        "path": "/login",
+        "horizontalOverflowPx": 0
+      }
+    ],
+    "maxHorizontalOverflowPx": 0,
+    "passedResponsiveNoHorizontalOverflow": true,
+    "loadNavigationSamples": [
+      {
+        "viewport": "mobile",
+        "path": "/",
+        "domContentLoadedEventEnd_ms": 155,
+        "loadEventEnd_ms": 156
+      },
+      {
+        "viewport": "mobile",
+        "path": "/verify",
+        "domContentLoadedEventEnd_ms": 21,
+        "loadEventEnd_ms": 22
+      },
+      {
+        "viewport": "mobile",
+        "path": "/login",
+        "domContentLoadedEventEnd_ms": 22,
+        "loadEventEnd_ms": 22
+      },
+      {
+        "viewport": "tablet",
+        "path": "/",
+        "domContentLoadedEventEnd_ms": 25,
+        "loadEventEnd_ms": 26
+      },
+      {
+        "viewport": "tablet",
+        "path": "/verify",
+        "domContentLoadedEventEnd_ms": 25,
+        "loadEventEnd_ms": 25
+      },
+      {
+        "viewport": "tablet",
+        "path": "/login",
+        "domContentLoadedEventEnd_ms": 21,
+        "loadEventEnd_ms": 22
+      },
+      {
+        "viewport": "desktop",
+        "path": "/",
+        "domContentLoadedEventEnd_ms": 22,
+        "loadEventEnd_ms": 22
+      },
+      {
+        "viewport": "desktop",
+        "path": "/verify",
+        "domContentLoadedEventEnd_ms": 21,
+        "loadEventEnd_ms": 22
+      },
+      {
+        "viewport": "desktop",
+        "path": "/login",
+        "domContentLoadedEventEnd_ms": 22,
+        "loadEventEnd_ms": 23
+      }
+    ],
+    "loadTimeNote": "Times are PerformanceNavigationTiming (browser-reported) against vite preview production build."
+  },
+  "generated_at_utc": "2026-04-25T18:36:12.238524+00:00"
+}

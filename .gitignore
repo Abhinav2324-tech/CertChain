@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Environment & secrets
+.env
+.env.local
+*.pem
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated certificates (demo PDFs & QR codes)
+backend/CERT-*.pdf
+backend/CERT-*_qr.png
+
+# Test artifacts
+frontend/test-results/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log

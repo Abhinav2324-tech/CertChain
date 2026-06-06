@@ -1,0 +1,126 @@
+{
+  "responsiveViewportChecks": [
+    {
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "path": "/",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "path": "/verify",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "path": "/login",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "path": "/",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "path": "/verify",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "path": "/login",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 720,
+      "path": "/",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 720,
+      "path": "/verify",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 720,
+      "path": "/login",
+      "horizontalOverflowPx": 0
+    }
+  ],
+  "maxHorizontalOverflowPx": 0,
+  "passedResponsiveNoHorizontalOverflow": true,
+  "loadNavigationSamples": [
+    {
+      "viewport": "mobile",
+      "path": "/",
+      "domContentLoadedEventEnd_ms": 155,
+      "loadEventEnd_ms": 156
+    },
+    {
+      "viewport": "mobile",
+      "path": "/verify",
+      "domContentLoadedEventEnd_ms": 21,
+      "loadEventEnd_ms": 22
+    },
+    {
+      "viewport": "mobile",
+      "path": "/login",
+      "domContentLoadedEventEnd_ms": 22,
+      "loadEventEnd_ms": 22
+    },
+    {
+      "viewport": "tablet",
+      "path": "/",
+      "domContentLoadedEventEnd_ms": 25,
+      "loadEventEnd_ms": 26
+    },
+    {
+      "viewport": "tablet",
+      "path": "/verify",
+      "domContentLoadedEventEnd_ms": 25,
+      "loadEventEnd_ms": 25
+    },
+    {
+      "viewport": "tablet",
+      "path": "/login",
+      "domContentLoadedEventEnd_ms": 21,
+      "loadEventEnd_ms": 22
+    },
+    {
+      "viewport": "desktop",
+      "path": "/",
+      "domContentLoadedEventEnd_ms": 22,
+      "loadEventEnd_ms": 22
+    },
+    {
+      "viewport": "desktop",
+      "path": "/verify",
+      "domContentLoadedEventEnd_ms": 21,
+      "loadEventEnd_ms": 22
+    },
+    {
+      "viewport": "desktop",
+      "path": "/login",
+      "domContentLoadedEventEnd_ms": 22,
+      "loadEventEnd_ms": 23
+    }
+  ],
+  "loadTimeNote": "Times are PerformanceNavigationTiming (browser-reported) against vite preview production build."
+}

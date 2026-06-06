@@ -32,6 +32,96 @@ CertChain is a full-stack system for universities to issue semester grade-sheet 
 
 ---
 
+## Architecture
+
+```mermaid
+flowchart TB
+    subgraph Users["Users"]
+        Admin["University Admin"]
+        Student["Student"]
+        Verifier["Public Verifier"]
+    end
+
+    subgraph Frontend["React Frontend · Vite · Tailwind"]
+        UI["Pages<br/>Admin Dashboard · Student Dashboard · Verify"]
+        State["Zustand Store<br/>role · session"]
+        Client["Axios API Client"]
+    end
+
+    subgraph Backend["FastAPI Backend · :8001"]
+        Router["API Routers<br/>certificate · student · university · verification · subjects"]
+        subgraph Services["Integrity Services"]
+            Hash["SHA-256<br/>Certificate Hash"]
+            Chain["Hash-Chain Ledger<br/>block_hash → previous_hash"]
+            PDF["PDF + QR Generator<br/>ReportLab · qrcode"]
+            Audit["Audit Logger"]
+        end
+    end
+
+    subgraph Storage["Data Layer"]
+        DB[("SQLite / PostgreSQL")]
+        Schema["certificates · students · universities<br/>blockchain · audit_logs · subjects"]
+    end
+
+    subgraph Testing["Evaluation Harness"]
+        Pytest["pytest<br/>tamper matrix · timing"]
+        Playwright["Playwright<br/>responsive · e2e"]
+        Results["evaluation/results.json"]
+    end
+
+    Admin --> UI
+    Student --> UI
+    Verifier --> UI
+    UI --> State
+    UI --> Client
+    Client -->|REST JSON| Router
+    Router --> Hash
+    Router --> Chain
+    Router --> PDF
+    Router --> Audit
+    Hash --> DB
+    Chain --> DB
+    Audit --> DB
+    Router --> DB
+    DB --- Schema
+    Pytest --> Router
+    Playwright --> UI
+    Pytest --> Results
+    Playwright --> Results
+```
+
+### Certificate lifecycle
+
+```mermaid
+sequenceDiagram
+    participant A as Admin
+    participant API as FastAPI
+    participant H as Hash Engine
+    participant C as Hash Chain
+    participant DB as Database
+    participant S as Student
+    participant V as Verifier
+
+    A->>API: Issue certificate (grades, SGPA)
+    API->>H: generate_certificate_hash(payload)
+    H-->>API: certificate_hash
+    API->>C: add_certificate_block(hash)
+    C-->>API: block_hash (linked to previous)
+    API->>DB: Store certificate + block
+    API->>API: Generate PDF with QR code
+    API-->>A: Certificate issued
+
+    S->>API: Download PDF
+    API-->>S: PDF file
+
+    V->>API: Verify by ID or upload PDF
+    API->>H: Recompute hash from stored payload
+    API->>C: Validate chain integrity
+    API-->>V: valid / tampered / revoked
+```
+
+---
+
 ## Project Structure
 
 ```
